@@ -1,4 +1,6 @@
-
+<?php
+require "dbh.inc.php";
+?>
 <!doctype html>
 <html lang="pl" class="h-100">
   <head>
@@ -39,19 +41,19 @@
     <h1 class="mt-5">Kamil Kostka</h1>
     <div class="row">
 		<div class="col-md-6">
-		<form>
+		<form action="add_url.php" method="post">
 			<div class="form-group">
 				<label for="url">URL</label>
-				<input type="url" class="form-control" id="url">
+				<input type="url" name="url" class="form-control" id="url">
 			</div>
 		</div>
 		<div class="col-md-2">
 		<label for="url"></label>
-			<button type="submit" class="btn btn-primary btn-block">Dodaj</button>
+			<button type="submit" name="submit" class="btn btn-primary btn-block">Dodaj</button>
 		</div>
 		</form>
 		<div class="col-md-4">
-		<form>
+		<form action="send_mail.php" method="post">
 			<div class="form-group">
 				<label for="email">Adres e-mail</label>
 				<input type="email" class="form-control" id="email">
@@ -67,12 +69,31 @@
 		<th><h1>Generator maili:</h1></th>
 	</tr>
 	<ul>
+	<?php
+						$sql = "SELECT * from urls";
+						$result = $conn->query($sql);
+						while($row = $result->fetch_assoc()) {
+							echo "	<li>".$row["url"]."</li>
+	";
+						}
+						?>
 	
 	</ul>
 </table></textarea>
 <button type="submit" class="btn btn-primary btn-block">Wyślij</button>
 </form>
 			</div>
+		</div>
+		<div class="col-md-6">
+			<ul>
+			<?php
+						$sql = "SELECT * from urls";
+						$result = $conn->query($sql);
+						while($row = $result->fetch_assoc()) {
+							echo "<li>".$row["url"]."</li>		<a href='delete_url.php?id=".$row["id"]."'>Usuń link</a>";
+						}
+						?>
+			</ul>
 		</div>
 	</div>
   </div>
