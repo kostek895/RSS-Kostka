@@ -56,14 +56,14 @@ require "dbh.inc.php";
 		<form action="send_mail.php" method="post">
 			<div class="form-group">
 				<label for="email">Adres e-mail</label>
-				<input type="email" class="form-control" id="email">
+				<input type="email" name="email" class="form-control" id="email">
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
-				<textarea id="w3mission" rows="10" style="width:100%;">
+				<textarea id="w3mission" name="tresc" rows="10" style="width:100%;">
 <table>
 	<tr>
 		<th><h1>Generator maili:</h1></th>
@@ -80,7 +80,7 @@ require "dbh.inc.php";
 	
 	</ul>
 </table></textarea>
-<button type="submit" class="btn btn-primary btn-block">Wyślij</button>
+<button type="submit" name="submit-mail" class="btn btn-primary btn-block">Wyślij</button>
 </form>
 			</div>
 		</div>
